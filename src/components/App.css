@@ -2,12 +2,35 @@ header {
     margin: 0;
 }
 
-nav {
-    width: 200px;
+main {
     margin: 0 auto;
+    text-align: center;
 }
 
-nav h3 {
+.equipment {
     display: inline-block;
-    margin: 0 1rem;
+    margin: 4px;
+    padding: 4px;
+    border: 1px solid silver;
+    border-radius: 2px;
+}
+
+.generate {
+    margin: 8px;
+}
+
+.slot {
+    color: #FFFFFF;
+    display: inline-block;
+    margin: 3px;
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.slot img {
+    position: relative;
+    top: 1px;
 }
