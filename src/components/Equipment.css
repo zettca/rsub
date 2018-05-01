@@ -1,0 +1,15 @@
+.equipment {
+    margin: auto;
+    text-align: center;
+}
+
+.equipment .slot {
+    display: inline-block;
+    position: relative;
+    margin: 6px;
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 2px;
+}
