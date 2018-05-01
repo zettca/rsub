@@ -1,65 +1,36 @@
+import itemList from './itemList';
+
 const SLOTS = Object.freeze({
-  'AMMO': 2,
-  'BODY': 3,
-  'BOOTS': 4,
-  'CAPE': 5,
-  'GLOVES': 6,
-  'HEAD': 7,
-  'LEGS': 8,
-  'NECK': 9,
-  'RING': 10,
-  'SHIELD': 11,
-  'WEAPON': 12,
+  'AMMO': 'AMMO',
+  'BODY': 'BODY',
+  'BOOTS': 'BOOTS',
+  'CAPE': 'CAPE',
+  'GLOVES': 'GLOVES',
+  'HEAD': 'HEAD',
+  'LEGS': 'LEGS',
+  'NECK': 'NECK',
+  'RING': 'RING',
+  'SHIELD': 'SHIELD',
+  'WEAPON': 'WEAPON',
 });
 
-const ITEM_IDS = [596, 626, 628, 630, 632, 634, 636, 638, 640, 642, 644]; // temporary generator
-
-export function generateAny() {
-  return ITEM_IDS[Math.floor(Math.random() * ITEM_IDS.length)];
+function randomFromSet(set) {
+  return set[Math.floor(Math.random() * set.length)];
 }
 
 export function generateGearSet() {
-  return {
-    ammo: generateAny(),
-    body: generateAny(),
-    boots: generateAny(),
-    cape: generateAny(),
-    gloves: generateAny(),
-    head: generateAny(),
-    legs: generateAny(),
-    neck: generateAny(),
-    ring: generateAny(),
-    shield: generateAny(),
-    weapon: generateAny(),
-  };
+  const names = Object.keys(SLOTS).map(n => n.toLowerCase());
+  const set = {};
+
+  names.forEach((name) => {
+    set[name] = generateGearSlot(name);
+  });
+
+  console.log(set);
+  return set;
 }
 
 export function generateGearSlot(gearSlot) {
-  switch (gearSlot.toUpperCase()) {
-    case SLOTS.AMMO:
-      break;
-    case SLOTS.BODY:
-      break;
-    case SLOTS.BOOTS:
-      break;
-    case SLOTS.CAPE:
-      break;
-    case SLOTS.GLOVES:
-      break;
-    case SLOTS.HEAD:
-      break;
-    case SLOTS.LEGS:
-      break;
-    case SLOTS.NECK:
-      break;
-    case SLOTS.RING:
-      break;
-    case SLOTS.SHIELD:
-      break;
-    case SLOTS.WEAPON:
-      break;
-    default:
-      break;
-  }
-  return generateAny();
+  const set = Object.keys(itemList[gearSlot.toLowerCase()]);
+  return Number(randomFromSet(set));
 }
