@@ -7,7 +7,7 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <nav>Hello!</nav>
+          <span>RuneScape Ultimate Bravery!</span>
         </header>
         <main>
           <Main/>
