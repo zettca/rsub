@@ -14,23 +14,29 @@ const SLOTS = Object.freeze({
   'WEAPON': 'WEAPON',
 });
 
-function randomFromSet(set) {
-  return set[Math.floor(Math.random() * set.length)];
+function randomFromSetNum(set, n) {
+  let len = set.length;
+  const result = new Array(n), taken = new Array(len);
+  while (n--) {
+    const i = Math.floor(Math.random() * len);
+    result[n] = set[i in taken ? taken[i] : i];
+    taken[i] = --len in taken ? taken[len] : len;
+  }
+  return result;
 }
 
-export function generateGearSet() {
+export function generateGearSet(NUM = 6) {
   const names = Object.keys(SLOTS).map(n => n.toLowerCase());
   const set = {};
 
   names.forEach((name) => {
-    set[name] = generateGearSlot(name);
+    set[name] = generateGearSlot(name, NUM);
   });
 
-  console.log(set);
   return set;
 }
 
-export function generateGearSlot(gearSlot) {
+export function generateGearSlot(gearSlot, NUM) {
   const set = Object.keys(itemList[gearSlot.toLowerCase()]);
-  return Number(randomFromSet(set));
+  return randomFromSetNum(set, NUM);
 }
