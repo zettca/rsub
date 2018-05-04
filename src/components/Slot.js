@@ -13,9 +13,7 @@ class Slot extends React.Component {
     const { order, items } = nextProps;
     const DELAY = 300;
     const OFFSET = order * DELAY * items.length;
-    console.log(items);
     items.forEach((item, i) => {
-      console.log(OFFSET, i + 1, DELAY, OFFSET + (i + 1) * DELAY);
       setTimeout(() => {
         this.setState({ itemI: i });
       }, OFFSET + (i + 1) * DELAY);
